@@ -231,7 +231,7 @@ bins = np.linspace(-5, 5, 20)
 
 x = np.array([2, 1, 4, 8, 3])
 i = np.argsort(x)
-print(x[i])
+print("\n Argsort example\n ", x[i])
 
 x = rand.randint(0, 10, (4, 6))
 print(x, "\n")
@@ -243,10 +243,10 @@ p = np.partition(a, 5)
 print(p)
 plt.gcf().clear()
 k = rand.rand(10, 2)
-print("\n k values are:",k)
+print("\n k values are:", k)
 
 plt.scatter(k[:, 0], k[:, 1], s=100)
-print(k[:,np.newaxis,:])
+print(k[:, np.newaxis, :])
 dist_sq = np.sum((k[:, np.newaxis, :] - k[np.newaxis, :, :]) ** 2, axis=-1)
 diffs = k[:, np.newaxis, :] - k[np.newaxis, :, :]
 nearest = np.argsort(dist_sq, axis=1)
@@ -263,4 +263,16 @@ for i in range(k.shape[0]):
         # plot a line from X[i] to X[j]
         # use some zip magic to make it happen:
         plt.plot(*zip(k[j], k[i]), color='black')
-plt.show()
+
+name = ['Alice', 'Bob', 'Cathy', 'Doug']
+age = [25, 45, 37, 19]
+weight = [55.0, 85.5, 68.0, 61.5]
+
+# Use a compound data type for structured arrays
+data = np.zeros(4, dtype={'names': ('name', 'age', 'weight'),
+                          'formats': ('U10', 'i4', 'f8')})
+
+data['name'] = name
+data['age'] = age
+data['weight'] = weight
+print(data['name'])
